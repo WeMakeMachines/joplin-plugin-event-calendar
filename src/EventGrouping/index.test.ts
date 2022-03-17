@@ -20,8 +20,6 @@ const mockSortedEvents = [
   },
 ];
 
-console.log(EventGrouping);
-
 describe("groupEventsByDay should", () => {
   const eventGrouping = new EventGrouping(mockSortedEvents, GroupTypes.Day);
 
