@@ -4,6 +4,6 @@ export default class Config {
   groupTypes: GroupTypes;
 
   constructor({ groupTypes }) {
-    this.groupTypes = groupTypes.toUpperCase() || GroupTypes.Week;
+    this.groupTypes = groupTypes.toUpperCase();
   }
 }

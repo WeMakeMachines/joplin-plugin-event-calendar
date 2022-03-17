@@ -1,3 +1,4 @@
+import { GroupTypes } from "../types";
 import Config from "../Config/Config";
 import Events from "../Events/";
 import EventGrouping from "../EventGrouping";
@@ -11,7 +12,7 @@ export default class Calendar {
   constructor(json) {
     this.jsonContent = json;
     this.config = new Config({
-      groupTypes: json["group"].charAt(0),
+      groupTypes: json["group"] ? json["group"].charAt(0) : GroupTypes.Day,
     });
     this.events = new Events(json["events"]);
     this.eventGrouping = new EventGrouping(
