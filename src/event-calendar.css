@@ -1,0 +1,75 @@
+.event-calendar .group {
+  text-align: center;
+  width: 36px;
+  height: 26px;
+  margin: 0 4px 4px 0;
+  border-top: 10px solid rgba(255, 140, 140, 0.5);
+  border-right: 1px solid rgba(20, 20, 20, 0.7);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.7);
+  border-left: 1px solid rgba(20, 20, 20, 0.2);
+  border-radius: 4px;
+}
+
+.event-calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.event-calendar .group .icon {
+  font-size: 15px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.event-calendar .group .icon.primary {
+  font-weight: bold;
+}
+
+.event-calendar .group .hover-card {
+  display: none;
+  width: 30vw;
+  text-align: center;
+  background-color: #fcff7f;
+  border-radius: 4px;
+  font-size: 2vw;
+}
+
+.event-calendar .group .hover-card .event {
+  border-top: 1px solid black;
+  padding: 0 2vw 0 2vw;
+}
+
+.event-calendar .group .hover-card .month-year {
+  background-color: black;
+  color: aliceblue;
+  margin: 0;
+  padding: 5px 0 5px;
+  font-size: 2.5vw;
+}
+
+.event-calendar .group .hover-card .event .date {
+}
+
+.event-calendar .group .hover-card .event .title {
+  font-size: 2.7vw;
+  font-weight: bold;
+  margin: 0;
+}
+
+.event-calendar .group .hover-card .event .text {
+}
+
+.event-calendar .group:hover {
+  cursor: pointer;
+  border-top: 10px solid rgba(255, 140, 140, 1);
+  border-right: 1px solid rgba(20, 20, 20, 1);
+  border-bottom: 1px solid rgba(20, 20, 20, 1);
+  border-left: 1px solid rgba(20, 20, 20, 1);
+}
+
+.event-calendar .group:hover .hover-card {
+  display: block;
+  position: fixed;
+  top: 5vh;
+  right: 5vw;
+}
