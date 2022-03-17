@@ -9,7 +9,7 @@ export default class DayRenderer extends Renderer {
 
   protected renderDateAsIcon(eventDate, groupIndex): HTMLSpanElement {
     const html = document.createElement("span");
-    html.className = "event";
+    html.className = "icon";
 
     const dayInMonth = eventDate.getDate();
 

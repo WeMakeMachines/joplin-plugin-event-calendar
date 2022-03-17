@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { generateRandomColor } from "../utilities";
 import EventGrouping from "../EventGrouping";
 import { Event } from "../types";
@@ -52,8 +53,17 @@ export default abstract class Renderer {
   }
 
   protected renderHoverCard(events: Event[]): HTMLDivElement {
-    const htmlHoverCard = document.createElement("div");
-    htmlHoverCard.className = "hover-card";
+    const html = document.createElement("div");
+    html.className = "hover-card";
+
+    const htmlMonthYear = document.createElement("p");
+    htmlMonthYear.className = "month-year";
+    htmlMonthYear.textContent = events[0].date.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+    });
+
+    html.appendChild(htmlMonthYear);
 
     const cardDetails = events.map((event) => {
       if (!event) {
@@ -61,23 +71,27 @@ export default abstract class Renderer {
       }
 
       const htmlEvent = document.createElement("div");
-      const htmlDateText = document.createElement("p");
-      htmlDateText.textContent = event.date.toLocaleDateString();
+      htmlEvent.className = "event";
+      const htmlEventDate = document.createElement("p");
+      htmlEventDate.className = "date";
+      htmlEventDate.textContent = format(event.date, "EEEE do");
       const htmlEventTitle = document.createElement("p");
+      htmlEventTitle.className = "title";
       htmlEventTitle.textContent = event.title;
       const htmlEventText = document.createElement("p");
+      htmlEventText.className = "text";
       htmlEventText.textContent = event.text;
 
-      htmlEvent.appendChild(htmlDateText);
+      htmlEvent.appendChild(htmlEventDate);
       htmlEvent.appendChild(htmlEventTitle);
       htmlEvent.appendChild(htmlEventText);
 
       return htmlEvent;
     });
 
-    cardDetails.forEach((cardDetail) => htmlHoverCard.appendChild(cardDetail));
+    cardDetails.forEach((cardDetail) => html.appendChild(cardDetail));
 
-    return htmlHoverCard;
+    return html;
   }
 
   protected renderIcon(event: Event | undefined): HTMLSpanElement {

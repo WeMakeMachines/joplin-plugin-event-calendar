@@ -10,7 +10,7 @@ export default class WeekRenderer extends Renderer {
 
   protected renderDateAsIcon(eventDate, groupIndex): HTMLSpanElement {
     const html = document.createElement("span");
-    html.className = "event";
+    html.className = "icon";
 
     const week = getWeek(eventDate);
 

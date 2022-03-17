@@ -9,7 +9,7 @@ export default class MonthRenderer extends Renderer {
 
   protected renderDateAsIcon(eventDate, groupIndex): HTMLSpanElement {
     const html = document.createElement("span");
-    html.className = "event";
+    html.className = "icon";
 
     // unlike getDate(), getMonth is 0 based
     const month = eventDate.getMonth() + 1;
