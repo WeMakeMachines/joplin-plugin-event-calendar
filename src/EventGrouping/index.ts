@@ -5,13 +5,13 @@ import {
   differenceInCalendarMonths,
 } from "date-fns";
 
-import { Event, Groups, Scale } from "../types";
+import { Event, Groups, GroupTypes } from "../types";
 
 export default class EventGrouping {
   private readonly sortedEvents: Event[];
   private readonly firstEvent: Event;
   private readonly lastEvent: Event;
-  public readonly scale: Scale;
+  public readonly groupTypes: GroupTypes;
   public readonly groups: Groups;
 
   public static generateEmptyGroups(length: number): Groups {
@@ -24,21 +24,21 @@ export default class EventGrouping {
     return groups;
   }
 
-  constructor(sortedEvents: Event[], scale: Scale) {
+  constructor(sortedEvents: Event[], groupTypes: GroupTypes) {
     this.sortedEvents = sortedEvents;
     this.firstEvent = this.sortedEvents[0];
     this.lastEvent = this.sortedEvents[this.sortedEvents.length - 1];
-    this.scale = scale;
-    this.groups = this.group(scale);
+    this.groupTypes = groupTypes;
+    this.groups = this.group(groupTypes);
   }
 
-  private group(scale: Scale): Groups {
-    switch (scale) {
-      case Scale.Day:
+  private group(groupTypes: GroupTypes): Groups {
+    switch (groupTypes) {
+      case GroupTypes.Day:
         return this.byDay();
-      case Scale.Week:
+      case GroupTypes.Week:
         return this.byWeek();
-      case Scale.Month:
+      case GroupTypes.Month:
         return this.byMonth();
     }
   }
@@ -100,12 +100,12 @@ export default class EventGrouping {
   public getDateFromGroupIndex(index: number): Date {
     const startDate = this.firstEvent.date;
 
-    switch (this.scale) {
-      case Scale.Day:
+    switch (this.groupTypes) {
+      case GroupTypes.Day:
         return add(startDate, { days: index });
-      case Scale.Week:
+      case GroupTypes.Week:
         return add(startDate, { weeks: index });
-      case Scale.Month:
+      case GroupTypes.Month:
         return add(startDate, { months: index });
     }
   }

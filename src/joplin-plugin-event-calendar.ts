@@ -1,4 +1,4 @@
-import { Scale } from "./types";
+import { GroupTypes } from "./types";
 
 const YAML = require("yaml");
 
@@ -38,14 +38,14 @@ export default function () {
         try {
           jsonContent = YAML.parse(markdownIt.utils.escapeHtml(token.content));
           calendar = new Calendar(jsonContent);
-          switch (calendar.config.scale) {
-            case Scale.Day:
+          switch (calendar.config.groupTypes) {
+            case GroupTypes.Day:
               contentHtml = new DayRenderer(calendar.eventGrouping).render();
               break;
-            case Scale.Week:
+            case GroupTypes.Week:
               contentHtml = new WeekRenderer(calendar.eventGrouping).render();
               break;
-            case Scale.Month:
+            case GroupTypes.Month:
               contentHtml = new MonthRenderer(calendar.eventGrouping).render();
               break;
           }

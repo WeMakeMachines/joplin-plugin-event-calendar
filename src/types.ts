@@ -1,4 +1,4 @@
-export enum Scale {
+export enum GroupTypes {
   Day = "D",
   Week = "W",
   Month = "M",

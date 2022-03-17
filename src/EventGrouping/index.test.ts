@@ -1,5 +1,5 @@
 const EventGrouping = require("./index").default;
-const { Scale } = require("../types");
+const { GroupTypes } = require("../types");
 
 const mockSortedEvents = [
   {
@@ -23,7 +23,7 @@ const mockSortedEvents = [
 console.log(EventGrouping);
 
 describe("groupEventsByDay should", () => {
-  const eventGrouping = new EventGrouping(mockSortedEvents, Scale.Day);
+  const eventGrouping = new EventGrouping(mockSortedEvents, GroupTypes.Day);
 
   test("generate the correct number of groups", () => {
     expect(eventGrouping.groups.length).toEqual(8);
@@ -35,7 +35,7 @@ describe("groupEventsByDay should", () => {
 });
 
 describe("groupEventsByWeek should", () => {
-  const eventGrouping = new EventGrouping(mockSortedEvents, Scale.Week);
+  const eventGrouping = new EventGrouping(mockSortedEvents, GroupTypes.Week);
 
   test("generate the correct number of groups", () => {
     expect(eventGrouping.groups.length).toEqual(2);
@@ -47,7 +47,7 @@ describe("groupEventsByWeek should", () => {
 });
 
 describe("groupEventsByMonth should", () => {
-  const eventGrouping = new EventGrouping(mockSortedEvents, Scale.Month);
+  const eventGrouping = new EventGrouping(mockSortedEvents, GroupTypes.Month);
 
   test("generate the correct number of groups", () => {
     expect(eventGrouping.groups.length).toEqual(1);

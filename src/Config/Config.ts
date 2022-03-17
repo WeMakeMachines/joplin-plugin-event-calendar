@@ -1,9 +1,9 @@
-import { Scale } from "../types";
+import { GroupTypes } from "../types";
 
 export default class Config {
-  scale: Scale;
+  groupTypes: GroupTypes;
 
-  constructor({ scale }) {
-    this.scale = scale.toUpperCase() || Scale.Week;
+  constructor({ groupTypes }) {
+    this.groupTypes = groupTypes.toUpperCase() || GroupTypes.Week;
   }
 }

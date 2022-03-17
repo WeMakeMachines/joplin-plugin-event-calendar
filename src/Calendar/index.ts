@@ -11,12 +11,12 @@ export default class Calendar {
   constructor(json) {
     this.jsonContent = json;
     this.config = new Config({
-      scale: json["scale"].charAt(0),
+      groupTypes: json["group"].charAt(0),
     });
     this.events = new Events(json["events"]);
     this.eventGrouping = new EventGrouping(
       this.events.sortedEvents,
-      this.config.scale
+      this.config.groupTypes
     );
   }
 }
