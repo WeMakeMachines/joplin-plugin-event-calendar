@@ -5,13 +5,13 @@ export default class Event implements _Event {
   title: string;
   text?: string;
   icon?: string;
-  backgroundColor?: string;
+  bgColor?: string;
 
-  constructor({ date, title, text, icon, backgroundColor }) {
+  constructor({ date, title, text, icon, bgColor }) {
     this.date = new Date(date);
     this.title = title;
     this.text = text;
     this.icon = icon;
-    this.backgroundColor = backgroundColor;
+    this.bgColor = bgColor;
   }
 }
