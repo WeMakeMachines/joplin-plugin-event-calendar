@@ -6,9 +6,10 @@ This plugin creates a calendar view of events that have been specified using the
 
 ## About
 
-- The main feature of this calendar is the ability to change the view; you can group events by day, week or by month.
-- Events do not have to placed in order.
-- There is no need to specify a start and end date; the calendar will automatically calibrate the view depending on the dates found in the events 
+- The main feature of this calendar is the ability to change the view; you can group events by day, week or by month
+- Events do not have to placed in order
+- There is no need to specify a start and end date; the calendar will automatically calibrate the view depending on the dates found in the events
+- Focus is on readability and simplicity of content, which is why the YAML is simple in structure
 
 ## Usage
 
@@ -39,6 +40,8 @@ This plugin creates a calendar view of events that have been specified using the
     - date: 2012-11-05
       icon: 🔥
       title: Bonfire night
+      text: We have been collecting wood for a week now...
+      bgColor: orange
     - date: 2012-12-25
       icon: 🎁
       title: Time for a gift!
