@@ -1,3 +1,8 @@
+.event-calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .event-calendar .group {
   text-align: center;
   width: 36px;
@@ -8,11 +13,6 @@
   border-bottom: 1px solid rgba(20, 20, 20, 0.7);
   border-left: 1px solid rgba(20, 20, 20, 0.2);
   border-radius: 4px;
-}
-
-.event-calendar {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .event-calendar .group .icon {
