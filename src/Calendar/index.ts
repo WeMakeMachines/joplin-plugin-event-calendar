@@ -1,5 +1,4 @@
 import { GroupTypes } from "../types";
-import Config from "../Config/Config";
 import Events from "../Events/";
 import { DayGrouping, WeekGrouping, MonthGrouping } from "../EventGrouping";
 import {
@@ -10,19 +9,17 @@ import {
 
 export default class Calendar {
   private readonly jsonContent: object;
-  public config: Config;
+  public groupType: GroupTypes;
   public events: Events;
 
   constructor(json) {
     this.jsonContent = json;
-    this.config = new Config({
-      groupType: json["group"] ? json["group"].charAt(0) : GroupTypes.Day,
-    });
+    this.groupType = json["group"] ? json["group"].charAt(0) : GroupTypes.Day;
     this.events = new Events(json["events"]);
   }
 
   render(): HTMLDivElement {
-    switch (this.config.groupType) {
+    switch (this.groupType) {
       case GroupTypes.Day:
         return new DayRenderer(
           new DayGrouping(this.events.sortedEvents)
