@@ -8,7 +8,7 @@ export default class Events {
     this.sortedEvents = this.processEvents(events);
   }
 
-  private processEvents(events): Event[] {
+  private processEvents(events: Event[]): Event[] {
     const _events = events.reduce((collection, event) => {
       // only include valid events
       if (event.title && event.date && isValid(new Date(event.date))) {
