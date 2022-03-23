@@ -14,7 +14,9 @@ export default class Calendar {
 
   constructor(json) {
     this.jsonContent = json;
-    this.groupType = json["group"] ? json["group"].charAt(0) : GroupTypes.Day;
+    this.groupType = json["group"]
+      ? json["group"].charAt(0).toUpperCase()
+      : GroupTypes.Day;
     this.events = new Events(json["events"]);
   }
 
