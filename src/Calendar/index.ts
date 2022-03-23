@@ -12,12 +12,12 @@ export default class Calendar {
   constructor(json) {
     this.jsonContent = json;
     this.config = new Config({
-      groupTypes: json["group"] ? json["group"].charAt(0) : GroupTypes.Day,
+      groupType: json["group"] ? json["group"].charAt(0) : GroupTypes.Day,
     });
     this.events = new Events(json["events"]);
     this.eventGrouping = new EventGrouping(
       this.events.sortedEvents,
-      this.config.groupTypes
+      this.config.groupType
     );
   }
 }

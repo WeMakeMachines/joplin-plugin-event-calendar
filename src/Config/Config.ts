@@ -1,9 +1,9 @@
 import { GroupTypes } from "../types";
 
 export default class Config {
-  groupTypes: GroupTypes;
+  groupType: GroupTypes;
 
-  constructor({ groupTypes }) {
-    this.groupTypes = groupTypes.toUpperCase();
+  constructor({ groupType }) {
+    this.groupType = groupType.toUpperCase();
   }
 }

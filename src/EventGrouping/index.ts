@@ -11,7 +11,7 @@ export default class EventGrouping {
   private readonly sortedEvents: Event[];
   private readonly firstEvent: Event;
   private readonly lastEvent: Event;
-  public readonly groupTypes: GroupTypes;
+  public readonly groupType: GroupTypes;
   public readonly groups: Groups;
 
   public static generateEmptyGroups(length: number): Groups {
@@ -24,16 +24,16 @@ export default class EventGrouping {
     return groups;
   }
 
-  constructor(sortedEvents: Event[], groupTypes: GroupTypes) {
+  constructor(sortedEvents: Event[], groupType: GroupTypes) {
     this.sortedEvents = sortedEvents;
     this.firstEvent = this.sortedEvents[0];
     this.lastEvent = this.sortedEvents[this.sortedEvents.length - 1];
-    this.groupTypes = groupTypes;
-    this.groups = this.group(groupTypes);
+    this.groupType = groupType;
+    this.groups = this.group(groupType);
   }
 
-  private group(groupTypes: GroupTypes): Groups {
-    switch (groupTypes) {
+  private group(groupType: GroupTypes): Groups {
+    switch (groupType) {
       case GroupTypes.Day:
         return this.byDay();
       case GroupTypes.Week:
@@ -100,7 +100,7 @@ export default class EventGrouping {
   public getDateFromGroupIndex(index: number): Date {
     const startDate = this.firstEvent.date;
 
-    switch (this.groupTypes) {
+    switch (this.groupType) {
       case GroupTypes.Day:
         return add(startDate, { days: index });
       case GroupTypes.Week:
