@@ -8,11 +8,11 @@ import {
 } from "../EventGroupingHtmlRenderer";
 
 export default class Calendar {
-  private readonly jsonContent: object;
-  public groupType: GroupTypes;
-  public events: Events;
+  public readonly jsonContent: object;
+  public readonly groupType: GroupTypes;
+  public readonly events: Events;
 
-  constructor(json) {
+  constructor(json: object) {
     this.jsonContent = json;
     this.groupType = json["group"]
       ? json["group"].charAt(0).toUpperCase()
