@@ -1,8 +1,8 @@
-import EventGrouping from "../EventGrouping";
+import { DayGrouping } from "../EventGrouping";
 import Renderer from "./Renderer";
 
 export default class DayRenderer extends Renderer {
-  constructor(eventGrouping: EventGrouping) {
+  constructor(eventGrouping: DayGrouping) {
     super(eventGrouping);
     this.container.className += " scale-day";
   }

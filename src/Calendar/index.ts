@@ -1,13 +1,17 @@
 import { GroupTypes } from "../types";
 import Config from "../Config/Config";
 import Events from "../Events/";
-import EventGrouping from "../EventGrouping";
+import { DayGrouping, WeekGrouping, MonthGrouping } from "../EventGrouping";
+import {
+  DayRenderer,
+  WeekRenderer,
+  MonthRenderer,
+} from "../EventGroupingHtmlRenderer";
 
 export default class Calendar {
   private readonly jsonContent: object;
   public config: Config;
   public events: Events;
-  public eventGrouping: EventGrouping;
 
   constructor(json) {
     this.jsonContent = json;
@@ -15,9 +19,22 @@ export default class Calendar {
       groupType: json["group"] ? json["group"].charAt(0) : GroupTypes.Day,
     });
     this.events = new Events(json["events"]);
-    this.eventGrouping = new EventGrouping(
-      this.events.sortedEvents,
-      this.config.groupType
-    );
+  }
+
+  render(): HTMLDivElement {
+    switch (this.config.groupType) {
+      case GroupTypes.Day:
+        return new DayRenderer(
+          new DayGrouping(this.events.sortedEvents)
+        ).render();
+      case GroupTypes.Week:
+        return new WeekRenderer(
+          new WeekGrouping(this.events.sortedEvents)
+        ).render();
+      case GroupTypes.Month:
+        return new MonthRenderer(
+          new MonthGrouping(this.events.sortedEvents)
+        ).render();
+    }
   }
 }

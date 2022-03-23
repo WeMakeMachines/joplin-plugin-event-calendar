@@ -1,9 +1,10 @@
 import { getWeek } from "date-fns";
-import EventGrouping from "../EventGrouping";
+
+import { WeekGrouping } from "../EventGrouping";
 import Renderer from "./Renderer";
 
 export default class WeekRenderer extends Renderer {
-  constructor(eventGrouping: EventGrouping) {
+  constructor(eventGrouping: WeekGrouping) {
     super(eventGrouping);
     this.container.className += " scale-week";
   }

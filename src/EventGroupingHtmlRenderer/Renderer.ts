@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { generateRandomColor } from "../utilities";
-import EventGrouping from "../EventGrouping";
+import EventGrouping from "../EventGrouping/EventGrouping";
 import { Event } from "../types";
 
 export default abstract class Renderer {
@@ -105,7 +105,7 @@ export default abstract class Renderer {
     return html;
   }
 
-  public render() {
+  public render(): HTMLDivElement {
     const groups = this.renderGroups();
 
     groups.forEach((group) => this.container.appendChild(group));

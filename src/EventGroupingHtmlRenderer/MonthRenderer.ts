@@ -1,8 +1,8 @@
-import EventGrouping from "../EventGrouping";
+import { MonthGrouping } from "../EventGrouping";
 import Renderer from "./Renderer";
 
 export default class MonthRenderer extends Renderer {
-  constructor(eventGrouping: EventGrouping) {
+  constructor(eventGrouping: MonthGrouping) {
     super(eventGrouping);
     this.container.className += " scale-month";
   }

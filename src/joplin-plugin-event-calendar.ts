@@ -1,11 +1,6 @@
-import { GroupTypes } from "./types";
-
 const YAML = require("yaml");
 
 import Calendar from "./Calendar/";
-import DayRenderer from "./EventGroupingHtmlRenderer/DayRenderer";
-import WeekRenderer from "./EventGroupingHtmlRenderer/WeekRenderer";
-import MonthRenderer from "./EventGroupingHtmlRenderer/MonthRenderer";
 
 export default function () {
   return {
@@ -32,27 +27,16 @@ export default function () {
         const token = tokens[idx];
         if (token.info !== "joplin-plugin-event-calendar")
           return defaultRender(tokens, idx, options, env, self);
-        let jsonContent: object;
-        let calendar: Calendar;
-        let contentHtml = document.createElement("div");
         try {
-          jsonContent = YAML.parse(markdownIt.utils.escapeHtml(token.content));
-          calendar = new Calendar(jsonContent);
-          switch (calendar.config.groupTypes) {
-            case GroupTypes.Day:
-              contentHtml = new DayRenderer(calendar.eventGrouping).render();
-              break;
-            case GroupTypes.Week:
-              contentHtml = new WeekRenderer(calendar.eventGrouping).render();
-              break;
-            case GroupTypes.Month:
-              contentHtml = new MonthRenderer(calendar.eventGrouping).render();
-              break;
-          }
+          const jsonContent = YAML.parse(
+            markdownIt.utils.escapeHtml(token.content)
+          );
+          const calendar = new Calendar(jsonContent);
+          const contentHtml = calendar.render();
+          return `<div class="joplin-editable">${contentHtml.outerHTML}</div>`;
         } catch (error) {
           console.log(error);
         }
-        return `<div class="joplin-editable">${contentHtml.outerHTML}</div>`;
       };
     },
     assets: function () {
