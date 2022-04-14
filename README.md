@@ -1,54 +1,84 @@
 # Event Calendar Plugin for Joplin
 
-This plugin creates a calendar view of events that have been specified using the [YAML](https://yaml.org/)  syntax within a fenced block.
+This is a plugin for the Joplin note-taking app.
 
-![preview](./DOCS/preview.png)
+It creates a calendar view of events that have been specified using the [YAML](https://yaml.org/) syntax within a fenced block.
+
+*Example Day view*
+![preview](./DOCS/preview_day.png)
 
 ## About
 
-- The main feature of this calendar is the ability to change the view; you can group events by day, week or by month
-- Events do not have to placed in order
-- There is no need to specify a start and end date; the calendar will automatically calibrate the view depending on the dates found in the events
+- Ability to change the group view; you can group events by day, week or by month
+- Events can be specified in any order
+- Events can be given an icon
 - Focus is on readability and simplicity of content, which is why the YAML is simple in structure
 
-## Usage
+## How to use
 
-1. To setup the calendar, first create a fenced block with the text `joplin-plugin-event-calendar` as the identifier
+Create a fenced block with the **codetype** `joplin-plugin-event-calendar`
 
-2. Specify what type of _grouping_ you would like with the `group` key, `d` for **day**, `w` for **week**, `m` for **month**
-
-    ```text
-    group: d           # (optional) d / w /m
-    ```
-
-3. Specify each event with the `events` key
-
-    ```text
-    events:
-    - date: yyyy-mm-dd  # (required)
-      icon: 🙂          # (optional) event icon
-      title: Ahoi       # (required) event title
-      text: hoi         # (optional) additional event details
-      bgColor: red      # (optional) if not specified, a random one will be assigned
-    ```
-
-## Example
+### Example with one event
 
     ```joplin-plugin-event-calendar
-    group: d
+    group: day
     events:
     - date: 2012-11-05
       icon: 🔥
       title: Bonfire night
       text: We have been collecting wood for a week now...
       bgColor: orange
-    - date: 2012-12-25
-      icon: 🎁
-      title: Time for a gift!
-    - date: 2013-1-1
-      icon: 🌟
-      title: New year's day
     ```
+
+Events are specified using the YAML syntax, with the following keys:
+
+### Group
+
+> **group**
+>
+> - _**optional**_ 
+> - **accepts** : `day`, `week`, `month`, `d`, `w`, `m`
+> - **default** `day`
+>
+> Sets the grouping for the view
+
+### Each event has the following properties
+
+> **date**
+>
+> - **required**
+> - **accepts** : _yyyy-mm-dd_ or _mm-dd-yyyy_
+>
+> The date of the event
+
+> **icon**
+>
+> - **optional**
+> - **accepts** : _string_
+>
+> The icon for the event
+
+> **title**
+>
+> - **required**
+> - **accepts** : _string_
+>
+> The title or heading of the event
+
+> **text**
+>
+> - **optional**
+> - **accepts** : _string_
+>
+> A more detailed description of the event
+
+> **bgColor**
+>
+> - **optional**
+> - **accepts** : _string_
+> - **default** : random
+>
+> The background color for the event container
 
 ## Acknowledgements
 
