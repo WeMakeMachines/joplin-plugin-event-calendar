@@ -1,5 +1,7 @@
+import { Event } from "../types";
 import { DayGrouping } from "../EventGrouping";
 import Renderer from "./Renderer";
+import GroupDayRenderer from "./GroupRenderer/GroupDayRenderer";
 
 export default class DayRenderer extends Renderer {
   constructor(eventGrouping: DayGrouping) {
@@ -7,21 +9,11 @@ export default class DayRenderer extends Renderer {
     this.container.className += " scale-day";
   }
 
-  protected renderDateAsIcon(eventDate, groupIndex): HTMLSpanElement {
-    const html = document.createElement("span");
-    html.className = "icon";
-
-    const dayInMonth = eventDate.getDate();
-
-    if (dayInMonth === 1) {
-      html.textContent = eventDate
-        .toLocaleDateString(undefined, { month: "long" })
-        .slice(0, 3);
-      html.className += " primary";
-    } else {
-      html.textContent = dayInMonth.toString();
-    }
-
-    return html;
+  protected renderGroups(
+    group: Event[],
+    groupDate: Date,
+    groupIndex: number
+  ): HTMLDivElement {
+    return new GroupDayRenderer(group, groupDate, groupIndex).render();
   }
 }

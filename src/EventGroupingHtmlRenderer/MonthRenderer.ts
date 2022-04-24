@@ -1,5 +1,7 @@
+import { Event } from "../types";
 import { MonthGrouping } from "../EventGrouping";
 import Renderer from "./Renderer";
+import GroupMonthRenderer from "./GroupRenderer/GroupMonthRenderer";
 
 export default class MonthRenderer extends Renderer {
   constructor(eventGrouping: MonthGrouping) {
@@ -7,26 +9,13 @@ export default class MonthRenderer extends Renderer {
     this.container.className += " scale-month";
   }
 
-  protected renderDateAsIcon(eventDate, groupIndex): HTMLSpanElement {
-    const html = document.createElement("span");
-    html.className = "icon";
+  protected renderGroups(
+    group: Event[],
+    groupDate: Date,
+    groupIndex: number
+  ): HTMLDivElement {
+    const monthGroup = new GroupMonthRenderer(group, groupDate, groupIndex);
 
-    // unlike getDate(), getMonth is 0 based
-    const month = eventDate.getMonth() + 1;
-
-    if (month === 1) {
-      html.textContent = eventDate.toLocaleDateString(undefined, {
-        year: "numeric",
-      });
-      html.className += " primary";
-    } else {
-      html.textContent = eventDate
-        .toLocaleDateString(undefined, {
-          month: "long",
-        })
-        .slice(0, 3);
-    }
-
-    return html;
+    return monthGroup.render();
   }
 }
