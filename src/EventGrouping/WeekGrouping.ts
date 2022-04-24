@@ -1,8 +1,21 @@
 import EventGrouping from "./EventGrouping";
 import { Event, Groups } from "../types";
-import { add, differenceInCalendarWeeks } from "date-fns";
+import {
+  add,
+  differenceInCalendarWeeks,
+  getWeek as dateFnsGetWeek,
+  isThisWeek as dateFnsIsThisWeek,
+} from "date-fns";
 
 export default class WeekGrouping extends EventGrouping {
+  static isThisWeek(date: Date): boolean {
+    return dateFnsIsThisWeek(date);
+  }
+
+  static getWeek(date: Date): number {
+    return dateFnsGetWeek(date);
+  }
+
   constructor(sortedEvents: Event[]) {
     super(sortedEvents);
     this.groups = this.group();

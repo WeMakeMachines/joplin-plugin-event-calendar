@@ -1,8 +1,16 @@
 import EventGrouping from "./EventGrouping";
 import { Event, Groups } from "../types";
-import { add, differenceInCalendarMonths } from "date-fns";
+import {
+  add,
+  differenceInCalendarMonths,
+  isThisMonth as dateFnsIsThisMonth,
+} from "date-fns";
 
 export default class MonthGrouping extends EventGrouping {
+  static isThisMonth(date: Date): boolean {
+    return dateFnsIsThisMonth(date);
+  }
+
   constructor(sortedEvents: Event[]) {
     super(sortedEvents);
     this.groups = this.group();

@@ -1,8 +1,16 @@
 import EventGrouping from "./EventGrouping";
 import { Event, Groups } from "../types";
-import { add, differenceInCalendarDays } from "date-fns";
+import {
+  add,
+  differenceInCalendarDays,
+  isToday as dateFnsIsToday,
+} from "date-fns";
 
 export default class DayGrouping extends EventGrouping {
+  static isToday(date: Date): boolean {
+    return dateFnsIsToday(date);
+  }
+
   constructor(sortedEvents: Event[]) {
     super(sortedEvents);
     this.groups = this.group();
