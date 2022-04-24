@@ -1,11 +1,7 @@
 import { GroupTypes } from "../types";
 import Events from "../Events/";
 import { DayGrouping, WeekGrouping, MonthGrouping } from "../EventGrouping";
-import {
-  DayRenderer,
-  WeekRenderer,
-  MonthRenderer,
-} from "../EventGroupingHtmlRenderer";
+import { DayRenderer, WeekRenderer, MonthRenderer } from "../HtmlRenderer";
 
 export default class Calendar {
   public readonly jsonContent: object;
