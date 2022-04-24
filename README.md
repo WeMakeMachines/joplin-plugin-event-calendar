@@ -1,18 +1,22 @@
 # Event Calendar Plugin for Joplin
 
-This is a plugin for the Joplin note-taking app.
+This is a plugin for the [Joplin](https://joplinapp.org/) note-taking app.
 
 It creates a calendar view of events that have been specified using the [YAML](https://yaml.org/) syntax within a fenced block.
 
-*Example Day view*
+- Organises events into "groupings"; you can group events by **day**, **week** or by **month**
+- Focus is on readability and simplicity of content, which is why the **YAML** is simple in structure
+
+###### Example Day view
+
 ![preview](./DOCS/preview_day.png)
 
-## About
+## Features
 
-- Ability to change the group view; you can group events by day, week or by month
-- Events can be specified in any order
-- Events can be given an icon
-- Focus is on readability and simplicity of content, which is why the YAML is simple in structure
+- A grouping that contains no events will show the **date** (day grouping), **week number** (week grouping), or **month** (month grouping)
+- If a grouping falls under the **current date**, it is highlighted in yellow
+- Events can be specified in **any order**
+- Events can be assigned an **icon** 🎁 such as an emoji
 
 ## How to use
 
@@ -32,53 +36,46 @@ Create a fenced block with the **codetype** `joplin-plugin-event-calendar`
 
 Events are specified using the YAML syntax, with the following keys:
 
-### Group
-
-> **group**
->
-> - _**optional**_ 
-> - **accepts** : `day`, `week`, `month`, `d`, `w`, `m`
-> - **default** `day`
->
+### group:
 > Sets the grouping for the view
+> - _**optional**_ 
+> - **default** `day`
+> - **accepts** : `day`, `week`, `month`, `d`, `w`, `m`
 
-### Each event has the following properties
-
-> **date**
+### events:
+> Each individual event is a list with its own properties
 >
-> - **required**
-> - **accepts** : _yyyy-mm-dd_ or _mm-dd-yyyy_
+> > **date:**
+> > 
+> > The date of the event
+> > - **required**
+> > - **accepts** : _yyyy-mm-dd_ or _mm-dd-yyyy_
 >
-> The date of the event
-
-> **icon**
+> > **icon:**
+> >
+> > - **optional**
+> > - **accepts** : _string_
+> >
+> > The icon for the event
 >
-> - **optional**
-> - **accepts** : _string_
+> > **title**
+> >
+> > The title or heading of the event 
+> > - **required**
+> > - **accepts** : _string_
 >
-> The icon for the event
-
-> **title**
+> > **text:**
+> >
+> > A more detailed description of the event
+> > - **optional**
+> > - **accepts** : _string_
 >
-> - **required**
-> - **accepts** : _string_
->
-> The title or heading of the event
-
-> **text**
->
-> - **optional**
-> - **accepts** : _string_
->
-> A more detailed description of the event
-
-> **bgColor**
->
-> - **optional**
-> - **accepts** : _string_
-> - **default** : random
->
-> The background color for the event container
+> > **bgColor:**
+> >
+> > The background color for the event container
+> > - **optional**
+> > - **default** : random
+> > - **accepts** : _string_
 
 ## Acknowledgements
 
