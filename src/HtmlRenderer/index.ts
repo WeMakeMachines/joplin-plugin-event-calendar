@@ -1,5 +1,5 @@
-import DayRenderer from "./DayRenderer";
-import WeekRenderer from "./WeekRenderer";
-import MonthRenderer from "./MonthRenderer";
+import DayRenderer from "./Day/";
+import WeekRenderer from "./Week/";
+import MonthRenderer from "./Month/";
 
 export { DayRenderer, WeekRenderer, MonthRenderer };

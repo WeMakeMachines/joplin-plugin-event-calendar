@@ -1,7 +1,7 @@
-import { Event } from "../types";
-import { WeekGrouping } from "../EventGrouping";
-import Renderer from "./Renderer";
-import GroupWeekRenderer from "./GroupRenderer/GroupWeekRenderer";
+import { Event } from "../../types";
+import { WeekGrouping } from "../../EventGrouping";
+import Renderer from "../Abstract/Renderer";
+import GroupWeekRenderer from "./GroupWeekRenderer";
 
 export default class WeekRenderer extends Renderer {
   constructor(eventGrouping: WeekGrouping) {

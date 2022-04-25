@@ -1,7 +1,7 @@
-import { Event } from "../types";
-import { MonthGrouping } from "../EventGrouping";
-import Renderer from "./Renderer";
-import GroupMonthRenderer from "./GroupRenderer/GroupMonthRenderer";
+import { Event } from "../../types";
+import { MonthGrouping } from "../../EventGrouping";
+import Renderer from "../Abstract/Renderer";
+import GroupMonthRenderer from "./GroupMonthRenderer";
 
 export default class MonthRenderer extends Renderer {
   constructor(eventGrouping: MonthGrouping) {
@@ -14,8 +14,6 @@ export default class MonthRenderer extends Renderer {
     groupDate: Date,
     groupIndex: number
   ): HTMLDivElement {
-    const monthGroup = new GroupMonthRenderer(group, groupDate, groupIndex);
-
-    return monthGroup.render();
+    return new GroupMonthRenderer(group, groupDate, groupIndex).render();
   }
 }

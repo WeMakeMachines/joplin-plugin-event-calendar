@@ -1,7 +1,7 @@
-import { Event } from "../types";
-import { DayGrouping } from "../EventGrouping";
-import Renderer from "./Renderer";
-import GroupDayRenderer from "./GroupRenderer/GroupDayRenderer";
+import { Event } from "../../types";
+import { DayGrouping } from "../../EventGrouping";
+import Renderer from "../Abstract/Renderer";
+import GroupDayRenderer from "./GroupDayRenderer";
 
 export default class DayRenderer extends Renderer {
   constructor(eventGrouping: DayGrouping) {
