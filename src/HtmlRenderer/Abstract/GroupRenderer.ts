@@ -59,6 +59,8 @@ export default abstract class GroupRenderer {
 
     if (event.icon) {
       html.textContent = event.icon;
+    } else {
+      html.textContent = event.title.slice(0, 2);
     }
 
     return html;
