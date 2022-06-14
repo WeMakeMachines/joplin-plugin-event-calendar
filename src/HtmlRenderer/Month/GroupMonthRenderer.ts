@@ -32,6 +32,10 @@ export default class GroupMonthRenderer extends GroupRenderer {
         .slice(0, 3);
     }
 
+    if (MonthGrouping.isThisMonth(eventDate)) {
+      html.className += " highlighted";
+    }
+
     return html;
   }
 }

@@ -27,6 +27,10 @@ export default class GroupDayRenderer extends GroupRenderer {
       html.textContent = dayInMonth.toString();
     }
 
+    if (DayGrouping.isToday(eventDate)) {
+      html.className += " highlighted";
+    }
+
     return html;
   }
 }
