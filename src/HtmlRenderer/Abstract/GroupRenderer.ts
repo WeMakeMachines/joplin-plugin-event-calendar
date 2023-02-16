@@ -1,6 +1,5 @@
 import { Event } from "../../types";
 import { generateRandomColor } from "../../utilities";
-import { format } from "date-fns";
 
 export default abstract class GroupRenderer {
   protected container: HTMLDivElement;
@@ -88,7 +87,10 @@ export default abstract class GroupRenderer {
       htmlEvent.className = "event";
       const htmlEventDate = document.createElement("p");
       htmlEventDate.className = "date";
-      htmlEventDate.textContent = format(event.date, "EEEE do");
+      htmlEventDate.textContent = event.date.toLocaleDateString(undefined, {
+        weekday: "long",
+        day: "numeric",
+      });
       const htmlEventTitle = document.createElement("p");
       htmlEventTitle.className = "title";
       htmlEventTitle.textContent = event.title;
