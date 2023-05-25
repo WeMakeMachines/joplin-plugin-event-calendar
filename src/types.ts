@@ -2,7 +2,6 @@ export enum GroupTypes {
   Day = "D",
   Week = "W",
   Month = "M",
-  Year = "Y",
 }
 
 export interface Event {

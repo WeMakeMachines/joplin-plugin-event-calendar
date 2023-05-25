@@ -3,11 +3,9 @@ import Events from "./Events/";
 import DayGrouping from "./EventGrouping/DayGrouping";
 import MonthGrouping from "./EventGrouping/MonthGrouping";
 import WeekGrouping from "./EventGrouping/MonthGrouping";
-import YearGrouping from "./EventGrouping/YearGrouping";
 import DayRenderer from "./HtmlRenderer/Day";
 import MonthRenderer from "./HtmlRenderer/Month";
 import WeekRenderer from "./HtmlRenderer/Week";
-import YearRenderer from "./HtmlRenderer/Year";
 
 export default class Calendar {
   public readonly jsonContent: object;
@@ -35,10 +33,6 @@ export default class Calendar {
       case GroupTypes.Month:
         return new MonthRenderer(
           new MonthGrouping(this.events.sortedEvents)
-        ).render();
-      case GroupTypes.Year:
-        return new YearRenderer(
-          new YearGrouping(this.events.sortedEvents)
         ).render();
     }
   }

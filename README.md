@@ -4,7 +4,7 @@ This is a plugin for the [Joplin](https://joplinapp.org/) note-taking app.
 
 It creates a calendar view of events that have been specified using the [YAML](https://yaml.org/) syntax within a fenced block.
 
-- Organises events into "groupings"; you can group events by **day**, **week**, **month** or **year**
+- Organises events into "groupings"; you can group events by **day**, **week**, or **month**
 - Focus is on readability and simplicity of content, which is why the **YAML** is simple in structure
 
 ###### Example Day view
@@ -41,7 +41,7 @@ Events are specified using the YAML syntax, with the following keys:
 > Sets the grouping for the view
 > - _**optional**_ 
 > - **default** `day`
-> - **accepts** : `day`, `week`, `month`, `year`, `d`, `w`, `m`, `y`
+> - **accepts** : `day`, `week`, `month`, `d`, `w`, `m`
 
 ### events:
 > Each individual event is a list with its own properties
