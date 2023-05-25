@@ -1,11 +1,11 @@
 import { GroupTypes } from "../types";
 import Events from "./Events/";
-import DayGrouping from "./EventGrouping/DayGrouping";
-import MonthGrouping from "./EventGrouping/MonthGrouping";
-import WeekGrouping from "./EventGrouping/MonthGrouping";
-import DayRenderer from "./HtmlRenderer/Day";
-import MonthRenderer from "./HtmlRenderer/Month";
-import WeekRenderer from "./HtmlRenderer/Week";
+import DayGrouping from "./Group/Day/DayGrouping";
+import MonthGrouping from "./Group/Month/MonthGrouping";
+import WeekGrouping from "./Group/Month/MonthGrouping";
+import DayRenderer from "./Group/Day/Renderer";
+import MonthRenderer from "./Group/Month/Renderer";
+import WeekRenderer from "./Group/Week/Renderer";
 
 export default class Calendar {
   public readonly jsonContent: object;

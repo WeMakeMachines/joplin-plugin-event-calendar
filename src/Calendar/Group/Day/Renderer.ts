@@ -1,9 +1,9 @@
 import { Event } from "../../../types";
-import DayGrouping from "../../EventGrouping/DayGrouping";
-import Renderer from "../Abstract/Renderer";
-import GroupDayRenderer from "./GroupDayRenderer";
+import DayGrouping from "./DayGrouping";
+import AbstractRenderer from "../../Abstract/Renderer";
+import DayRenderer from "./DayRenderer";
 
-export default class DayRenderer extends Renderer {
+export default class Renderer extends AbstractRenderer {
   constructor(eventGrouping: DayGrouping) {
     super(eventGrouping);
     this.container.className += " scale-day";
@@ -14,6 +14,6 @@ export default class DayRenderer extends Renderer {
     groupDate: Date,
     groupIndex: number
   ): HTMLDivElement {
-    return new GroupDayRenderer(group, groupDate, groupIndex).render();
+    return new DayRenderer(group, groupDate, groupIndex).render();
   }
 }

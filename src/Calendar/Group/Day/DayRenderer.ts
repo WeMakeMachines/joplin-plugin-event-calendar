@@ -1,9 +1,9 @@
 import { Event } from "../../../types";
-import DayGrouping from "../../EventGrouping/DayGrouping";
+import DayGrouping from "./DayGrouping";
 
-import GroupRenderer from "../Abstract/GroupRenderer";
+import GroupRenderer from "../../Abstract/GroupRenderer";
 
-export default class GroupDayRenderer extends GroupRenderer {
+export default class DayRenderer extends GroupRenderer {
   constructor(group: Event[], groupDate: Date, groupIndex: number) {
     super(group, groupDate, groupIndex);
 

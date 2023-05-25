@@ -1,5 +1,5 @@
-import { Event } from "../../../types";
-import { generateRandomColor } from "../../../utilities";
+import { Event } from "../../types";
+import { generateRandomColor } from "../../utilities";
 
 export default abstract class GroupRenderer {
   protected container: HTMLDivElement;

@@ -1,5 +1,5 @@
 const { GroupTypes } = require("../../../types");
-const MonthGrouping = require("../../EventGrouping/MonthGrouping").default;
+const MonthGrouping = require("../../Group/Month/MonthGrouping").default;
 const mockSortedEvents = require("./mockSortedEvents").default;
 
 describe("groupEventsByMonth should", () => {

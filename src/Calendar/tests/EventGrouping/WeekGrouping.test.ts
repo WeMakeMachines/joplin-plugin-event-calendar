@@ -1,5 +1,5 @@
 const { GroupTypes } = require("../../../types");
-const WeekGrouping = require("../../EventGrouping/WeekGrouping").default;
+const WeekGrouping = require("../../Group/Week/WeekGrouping").default;
 const mockSortedEvents = require("./mockSortedEvents").default;
 
 describe("groupEventsByWeek should", () => {

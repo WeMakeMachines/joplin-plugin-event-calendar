@@ -1,5 +1,5 @@
 const { GroupTypes } = require("../../../types");
-const DayGrouping = require("../../EventGrouping/DayGrouping").default;
+const DayGrouping = require("../../Group/Day/DayGrouping").default;
 const mockSortedEvents = require("./mockSortedEvents").default;
 
 describe("groupEventsByDay should", () => {

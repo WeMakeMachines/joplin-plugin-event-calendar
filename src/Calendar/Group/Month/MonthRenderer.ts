@@ -1,9 +1,9 @@
 import { Event } from "../../../types";
-import MonthGrouping from "../../EventGrouping/MonthGrouping";
+import MonthGrouping from "./MonthGrouping";
 
-import GroupRenderer from "../Abstract/GroupRenderer";
+import GroupRenderer from "../../Abstract/GroupRenderer";
 
-export default class GroupMonthRenderer extends GroupRenderer {
+export default class MonthRenderer extends GroupRenderer {
   constructor(group: Event[], groupDate: Date, groupIndex: number) {
     super(group, groupDate, groupIndex);
 

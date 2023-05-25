@@ -8,6 +8,15 @@ export default class Events {
     this.sortedEvents = this.processEvents(events);
   }
 
+  /**
+   * processEvents
+   *
+   * Drops invalid events from dataset
+   * Sorts events by date, in ascending order
+   *
+   * @param events: Event[]
+   * @private
+   */
   private processEvents(events: Event[]): Event[] {
     const _events = events.reduce((collection, event) => {
       // only include valid events

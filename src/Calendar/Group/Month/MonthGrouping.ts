@@ -1,19 +1,14 @@
-import EventGrouping from "./EventGrouping";
-import { Event, Groups } from "../../types";
+import EventGrouping from "../../Abstract/EventGrouping";
+import { Event, Groups } from "../../../types";
 import {
   add,
-  differenceInCalendarWeeks,
-  getWeek as dateFnsGetWeek,
-  isThisWeek as dateFnsIsThisWeek,
+  differenceInCalendarMonths,
+  isThisMonth as dateFnsIsThisMonth,
 } from "date-fns";
 
-export default class WeekGrouping extends EventGrouping {
-  static isThisWeek(date: Date): boolean {
-    return dateFnsIsThisWeek(date);
-  }
-
-  static getWeek(date: Date): number {
-    return dateFnsGetWeek(date);
+export default class MonthGrouping extends EventGrouping {
+  static isThisMonth(date: Date): boolean {
+    return dateFnsIsThisMonth(date);
   }
 
   constructor(sortedEvents: Event[]) {
@@ -22,13 +17,13 @@ export default class WeekGrouping extends EventGrouping {
   }
 
   group(): Groups {
-    const numberOfGroups = differenceInCalendarWeeks(
+    const numberOfGroups = differenceInCalendarMonths(
       this.lastEvent.date,
       this.firstEvent.date
     );
 
     return this.sortedEvents.reduce((prev, event) => {
-      const groupNumber = differenceInCalendarWeeks(
+      const groupNumber = differenceInCalendarMonths(
         event.date,
         this.firstEvent.date
       );
@@ -42,6 +37,6 @@ export default class WeekGrouping extends EventGrouping {
   public getDateFromGroupIndex(index: number): Date {
     const startDate = this.firstEvent.date;
 
-    return add(startDate, { weeks: index });
+    return add(startDate, { months: index });
   }
 }
