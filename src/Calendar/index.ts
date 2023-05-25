@@ -14,10 +14,22 @@ export default class Calendar {
 
   constructor(json: object) {
     this.jsonContent = json;
-    this.groupType = json["group"]
-      ? json["group"].charAt(0).toUpperCase()
-      : GroupTypes.Day;
+    this.groupType = this.getGroupType(json);
     this.events = new Events(json["events"]);
+  }
+
+  private getGroupType(json: object): GroupTypes {
+    if (!json["group"]) {
+      return GroupTypes.Day;
+    }
+
+    const groupType = json["group"].charAt(0).toUpperCase();
+
+    if (!Object.values(GroupTypes).includes(groupType)) {
+      return GroupTypes.Day;
+    }
+
+    return groupType;
   }
 
   render(): HTMLDivElement {
