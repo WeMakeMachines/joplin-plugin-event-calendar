@@ -1,4 +1,4 @@
-import { Event, Groups } from "../types";
+import { Event, Groups } from "../../types";
 
 export default abstract class EventGrouping {
   protected readonly sortedEvents: Event[];

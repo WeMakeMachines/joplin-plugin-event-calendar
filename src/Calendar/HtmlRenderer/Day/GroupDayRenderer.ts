@@ -1,13 +1,13 @@
-import { Event } from "../../types";
-import { WeekGrouping } from "../../EventGrouping";
+import { Event } from "../../../types";
+import DayGrouping from "../../EventGrouping/DayGrouping";
 
 import GroupRenderer from "../Abstract/GroupRenderer";
 
-export default class GroupWeekRenderer extends GroupRenderer {
+export default class GroupDayRenderer extends GroupRenderer {
   constructor(group: Event[], groupDate: Date, groupIndex: number) {
     super(group, groupDate, groupIndex);
 
-    if (WeekGrouping.isThisWeek(groupDate)) {
+    if (DayGrouping.isToday(groupDate)) {
       this.highlightGroup();
     }
   }
@@ -16,18 +16,18 @@ export default class GroupWeekRenderer extends GroupRenderer {
     const html = document.createElement("span");
     html.className = "icon";
 
-    const week = WeekGrouping.getWeek(eventDate);
+    const dayInMonth = eventDate.getDate();
 
-    if (week === 1) {
-      html.textContent = eventDate.toLocaleDateString(undefined, {
-        year: "numeric",
-      });
+    if (dayInMonth === 1) {
+      html.textContent = eventDate
+        .toLocaleDateString(undefined, { month: "long" })
+        .slice(0, 3);
       html.className += " primary";
     } else {
-      html.textContent = week.toString();
+      html.textContent = dayInMonth.toString();
     }
 
-    if (WeekGrouping.isThisWeek(eventDate)) {
+    if (DayGrouping.isToday(eventDate)) {
       html.className += " highlighted";
     }
 

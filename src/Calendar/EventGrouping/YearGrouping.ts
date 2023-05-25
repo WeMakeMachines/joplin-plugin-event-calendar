@@ -1,14 +1,14 @@
 import EventGrouping from "./EventGrouping";
-import { Event, Groups } from "../types";
+import { Event, Groups } from "../../types";
 import {
   add,
-  differenceInCalendarMonths,
-  isThisMonth as dateFnsIsThisMonth,
+  differenceInCalendarYears,
+  isThisYear as dateFnsIsThisYear,
 } from "date-fns";
 
-export default class MonthGrouping extends EventGrouping {
-  static isThisMonth(date: Date): boolean {
-    return dateFnsIsThisMonth(date);
+export default class YearGrouping extends EventGrouping {
+  static isThisYear(date: Date): boolean {
+    return dateFnsIsThisYear(date);
   }
 
   constructor(sortedEvents: Event[]) {
@@ -17,13 +17,13 @@ export default class MonthGrouping extends EventGrouping {
   }
 
   group(): Groups {
-    const numberOfGroups = differenceInCalendarMonths(
+    const numberOfGroups = differenceInCalendarYears(
       this.lastEvent.date,
       this.firstEvent.date
     );
 
     return this.sortedEvents.reduce((prev, event) => {
-      const groupNumber = differenceInCalendarMonths(
+      const groupNumber = differenceInCalendarYears(
         event.date,
         this.firstEvent.date
       );
@@ -37,6 +37,6 @@ export default class MonthGrouping extends EventGrouping {
   public getDateFromGroupIndex(index: number): Date {
     const startDate = this.firstEvent.date;
 
-    return add(startDate, { months: index });
+    return add(startDate, { years: index });
   }
 }

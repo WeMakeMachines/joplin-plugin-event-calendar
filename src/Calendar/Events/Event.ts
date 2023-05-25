@@ -1,4 +1,4 @@
-import { Event as EventType } from "../types";
+import { Event as EventType } from "../../types";
 
 export default class Event implements EventType {
   date: Date;

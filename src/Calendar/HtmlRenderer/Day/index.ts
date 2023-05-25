@@ -1,5 +1,5 @@
-import { Event } from "../../types";
-import { DayGrouping } from "../../EventGrouping";
+import { Event } from "../../../types";
+import DayGrouping from "../../EventGrouping/DayGrouping";
 import Renderer from "../Abstract/Renderer";
 import GroupDayRenderer from "./GroupDayRenderer";
 

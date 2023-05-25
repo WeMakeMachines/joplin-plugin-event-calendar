@@ -1,5 +1,5 @@
 import EventGrouping from "../../EventGrouping/EventGrouping";
-import { Event } from "../../types";
+import { Event } from "../../../types";
 
 export default abstract class Renderer {
   protected abstract renderGroups(

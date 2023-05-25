@@ -1,4 +1,4 @@
-const Events = require("./index").default;
+const Events = require("../../Events").default;
 
 const mockEventsAllValid = [
   {

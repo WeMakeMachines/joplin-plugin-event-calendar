@@ -1,5 +1,5 @@
-import { Event } from "../../types";
-import { YearGrouping } from "../../EventGrouping";
+import { Event } from "../../../types";
+import YearGrouping from "../../EventGrouping/YearGrouping";
 
 import GroupRenderer from "../Abstract/GroupRenderer";
 

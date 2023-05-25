@@ -1,14 +1,19 @@
 import EventGrouping from "./EventGrouping";
-import { Event, Groups } from "../types";
+import { Event, Groups } from "../../types";
 import {
   add,
-  differenceInCalendarDays,
-  isToday as dateFnsIsToday,
+  differenceInCalendarWeeks,
+  getWeek as dateFnsGetWeek,
+  isThisWeek as dateFnsIsThisWeek,
 } from "date-fns";
 
-export default class DayGrouping extends EventGrouping {
-  static isToday(date: Date): boolean {
-    return dateFnsIsToday(date);
+export default class WeekGrouping extends EventGrouping {
+  static isThisWeek(date: Date): boolean {
+    return dateFnsIsThisWeek(date);
+  }
+
+  static getWeek(date: Date): number {
+    return dateFnsGetWeek(date);
   }
 
   constructor(sortedEvents: Event[]) {
@@ -17,13 +22,13 @@ export default class DayGrouping extends EventGrouping {
   }
 
   group(): Groups {
-    const numberOfGroups = differenceInCalendarDays(
+    const numberOfGroups = differenceInCalendarWeeks(
       this.lastEvent.date,
       this.firstEvent.date
     );
 
     return this.sortedEvents.reduce((prev, event) => {
-      const groupNumber = differenceInCalendarDays(
+      const groupNumber = differenceInCalendarWeeks(
         event.date,
         this.firstEvent.date
       );
@@ -37,6 +42,6 @@ export default class DayGrouping extends EventGrouping {
   public getDateFromGroupIndex(index: number): Date {
     const startDate = this.firstEvent.date;
 
-    return add(startDate, { days: index });
+    return add(startDate, { weeks: index });
   }
 }
