@@ -17,6 +17,54 @@
   background-color: aliceblue;
 }
 
+.event-calendar .group.month-0 {
+  border-top: 10px solid rgb(176, 224, 230); /* January - icy blue */
+}
+
+.event-calendar .group.month-1 {
+  border-top: 10px solid rgb(173, 216, 230); /* February - pale winter blue */
+}
+
+.event-calendar .group.month-2 {
+  border-top: 10px solid rgb(144, 238, 144); /* March - early spring green */
+}
+
+.event-calendar .group.month-3 {
+  border-top: 10px solid rgb(60, 179, 113); /* April - fresh growth green */
+}
+
+.event-calendar .group.month-4 {
+  border-top: 10px solid rgb(255, 182, 193); /* May - soft blossom pink */
+}
+
+.event-calendar .group.month-5 {
+  border-top: 10px solid rgb(255, 160, 122); /* June - warm peach */
+}
+
+.event-calendar .group.month-6 {
+  border-top: 10px solid rgb(255, 0, 183); /* July - deep pink */
+}
+
+.event-calendar .group.month-7 {
+  border-top: 10px solid rgb(255, 38, 0); /* August - hot red-orange */
+}
+
+.event-calendar .group.month-8 {
+  border-top: 10px solid rgb(255, 215, 0); /* September - golden transition */
+}
+
+.event-calendar .group.month-9 {
+  border-top: 10px solid rgb(210, 105, 30); /* October - autumn brown/orange */
+}
+
+.event-calendar .group.month-10 {
+  border-top: 10px solid rgb(128, 0, 128); /* November - deep purple */
+}
+
+.event-calendar .group.month-11 {
+  border-top: 10px solid rgb(220, 20, 60); /* December - festive red */
+}
+
 .event-calendar .group.highlight {
   border-top: 10px solid rgba(255, 223, 65, 1);
 }

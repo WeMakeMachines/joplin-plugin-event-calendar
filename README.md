@@ -6,6 +6,7 @@ It creates a calendar view of events that have been specified using the [YAML](h
 
 - Organises events into "groupings"; you can group events by **day**, **week**, or **month**
 - Focus is on readability and simplicity of content, which is why the **YAML** is simple in structure
+- Hover over a calendar tile to see event information
 
 ###### Example Day view
 
@@ -38,17 +39,21 @@ Create a fenced block with the **codetype** `joplin-plugin-event-calendar`
 Events are specified using the YAML syntax, with the following keys:
 
 ### group:
+
 > Sets the grouping for the view
-> - _**optional**_ 
+>
+> - _**optional**_
 > - **default** `day`
 > - **accepts** : `day`, `week`, `month`, `d`, `w`, `m`
 
 ### events:
+
 > Each individual event is a list with its own properties
 >
 > > **date:**
-> > 
+> >
 > > The date of the event
+> >
 > > - **required**
 > > - **accepts** : _yyyy-mm-dd_ or _mm-dd-yyyy_
 >
@@ -61,19 +66,22 @@ Events are specified using the YAML syntax, with the following keys:
 >
 > > **title**
 > >
-> > The title or heading of the event 
+> > The title or heading of the event
+> >
 > > - **required**
 > > - **accepts** : _string_
 >
 > > **text:**
 > >
 > > A more detailed description of the event
+> >
 > > - **optional**
 > > - **accepts** : _string_
 >
 > > **bgColor:**
 > >
 > > The background color for the event container
+> >
 > > - **optional**
 > > - **default** : random
 > > - **accepts** : _string_

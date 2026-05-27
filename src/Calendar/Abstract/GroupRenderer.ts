@@ -9,12 +9,14 @@ export default abstract class GroupRenderer {
 
   protected abstract renderDateAsIcon(
     eventDate: Date,
-    groupIndex: number
+    groupIndex: number,
   ): HTMLSpanElement;
 
   constructor(group: Event[], groupDate: Date, groupIndex: number) {
+    const month = groupDate.getMonth();
+
     this.container = document.createElement("div");
-    this.container.className = "group";
+    this.container.className = `group month-${month}`;
     this.group = group;
     this.groupDate = groupDate;
     this.groupIndex = groupIndex;
