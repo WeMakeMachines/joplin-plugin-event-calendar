@@ -1,4 +1,4 @@
-import Event from "src/Calendar/Events/Event";
+import Event from "../../Events/Event";
 import Events from "../../Events";
 
 const mockEventsAllValid = [
