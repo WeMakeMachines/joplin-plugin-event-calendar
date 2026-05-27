@@ -1,4 +1,5 @@
-const Events = require("../../Events").default;
+import Event from "src/Calendar/Events/Event";
+import Events from "../../Events";
 
 const mockEventsAllValid = [
   {
@@ -31,7 +32,14 @@ const mockEventsAllInvalid = [
 
 describe("Events constructor should", () => {
   describe("When the events are valid", () => {
-    const events = new Events(mockEventsAllValid);
+    const mockData = mockEventsAllValid.map(
+      ({ date, title }) =>
+        new Event({
+          date: new Date(date),
+          title: title,
+        }),
+    );
+    const events = new Events(mockData);
 
     test("generate the correct number of events", () => {
       expect(events.sortedEvents.length).toEqual(4);
@@ -40,7 +48,7 @@ describe("Events constructor should", () => {
     test("sort the events by date, ascending", () => {
       const firstEventDate = new Date(events.sortedEvents[0].date).getDate();
       const lastEventDate = new Date(
-        events.sortedEvents[events.sortedEvents.length - 1].date
+        events.sortedEvents[events.sortedEvents.length - 1].date,
       ).getDate();
       expect(firstEventDate).toEqual(20);
       expect(lastEventDate).toEqual(27);
@@ -48,7 +56,14 @@ describe("Events constructor should", () => {
   });
 
   describe("When the events are invalid", () => {
-    const events = new Events(mockEventsAllInvalid);
+    const mockData = mockEventsAllInvalid.map(
+      ({ date, title }) =>
+        new Event({
+          date: new Date(date),
+          title: title,
+        }),
+    );
+    const events = new Events(mockData);
 
     test("generate the correct number of events", () => {
       expect(events.sortedEvents.length).toEqual(0);

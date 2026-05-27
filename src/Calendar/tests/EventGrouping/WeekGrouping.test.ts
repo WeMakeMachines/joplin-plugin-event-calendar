@@ -1,9 +1,8 @@
-const { GroupTypes } = require("../../../types");
-const WeekGrouping = require("../../Group/Week/WeekGrouping").default;
-const mockSortedEvents = require("./mockSortedEvents").default;
+import WeekGrouping from "../../Group/Week/WeekGrouping";
+import mockSortedEvents from "./mockSortedEvents";
 
 describe("groupEventsByWeek should", () => {
-  const eventGrouping = new WeekGrouping(mockSortedEvents, GroupTypes.Week);
+  const eventGrouping = new WeekGrouping(mockSortedEvents);
 
   test("generate the correct number of groups", () => {
     expect(eventGrouping.groups.length).toEqual(2);

@@ -6,8 +6,5 @@
 		"jsx": "react",
 		"allowJs": true,
 		"baseUrl": "."
-	},
-	"exclude": [
-		"src/**/*.test.ts"
-	]
+	}
 }
